@@ -23,7 +23,12 @@
     	resolution: 'low_resolution',
 		accessToken: 'IGQVJXOVppUlg5ZAFBXT29maVNjdkxKS19SVDIyVUFJRnJTUmYzY1NQQXlSN016Nk5BREh3WFV5dFFYY2JTZAFltTFlJdVFqQkEtMzY4M0lyZAFlLWGVIemlWLU9vYnBCRS1HQWJULXBOTnphaHRzRldJWAZDZD'
 	});
-	userFeed.run();
+	
+		
+	function myFunction() {
+  	setInterval(function(){ userFeed.run(); }, 3000);
+	}
+	myFunction();
 	</script>
 </body>
 </html>

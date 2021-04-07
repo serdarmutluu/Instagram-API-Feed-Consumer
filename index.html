@@ -13,7 +13,7 @@
     num_photos = 1;
  
 $.ajax({ // the first ajax request returns the ID of user rudrastyh
-	url: 'https://api.instagram.com/v1/users/search',
+	url: 'https://graph.instagram.com/me/media?fields=id,caption&access_token=IGQVJXOVppUlg5ZAFBXT29maVNjdkxKS19SVDIyVUFJRnJTUmYzY1NQQXlSN016Nk5BREh3WFV5dFFYY2JTZAFltTFlJdVFqQkEtMzY4M0lyZAFlLWGVIemlWLU9vYnBCRS1HQWJULXBOTnphaHRzRldJWAZDZD',
 	dataType: 'jsonp',
 	type: 'GET',
 	data: {access_token: token, q: username}, // actually it is just the search by username

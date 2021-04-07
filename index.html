@@ -6,41 +6,31 @@
 	</head>
 
 	<body>
-		
+		<ul></ul>
 <script>
-  window.fbAsyncInit = function() {
-    FB.init({
-      appId      : 448817572899568,
-      cookie     : true,
-      xfbml      : true,
-      version    : 'v10'
-    });
-      
-    FB.AppEvents.logPageView();   
-      
-  };
-
-  (function(d, s, id){
-     var js, fjs = d.getElementsByTagName(s)[0];
-     if (d.getElementById(id)) {return;}
-     js = d.createElement(s); js.id = id;
-     js.src = "https://connect.facebook.net/en_US/sdk.js";
-     fjs.parentNode.insertBefore(js, fjs);
-   }(document, 'script', 'facebook-jssdk'));
-
-
-
-FB.getLoginStatus(function(response) {
-    statusChangeCallback(response);
+ var token = 'your access token', // learn how to obtain it below
+    userid = 1362124742, // User ID - get it in source HTML of your Instagram profile or look at the next example :)
+    num_photos = 4; // how much photos do you want to get
+ 
+$.ajax({
+	url: 'https://api.instagram.com/v1/users/' + userid + '/media/recent', // or /users/self/media/recent for Sandbox
+	dataType: 'jsonp',
+	type: 'GET',
+	data: {access_token: token, count: num_photos},
+	success: function(data){
+ 		console.log(data);
+		for( x in data.data ){
+			$('ul').append('<li><img src="'+data.data[x].images.low_resolution.url+'"></li>'); // data.data[x].images.low_resolution.url - URL of image, 306х306
+			// data.data[x].images.thumbnail.url - URL of image 150х150
+			// data.data[x].images.standard_resolution.url - URL of image 612х612
+			// data.data[x].link - Instagram post URL 
+		}
+	},
+	error: function(data){
+		console.log(data); // send the error notifications to console
+	}
 });
-
 </script>
-
-
-<fb:login-button 
-  scope="public_profile,email"
-  onlogin="checkLoginState();">
-</fb:login-button>
 
 	</body>
 </html>
